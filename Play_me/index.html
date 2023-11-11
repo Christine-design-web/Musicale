@@ -25,15 +25,15 @@
         <button onclick="repeat()">Repeat</button>
         <button onclick="mute()">Mute</button>
         <button onclick="unmute()">Unmute</button> -->
-        <label for="time">Time:</label>
+        <!-- <label for="time">Time:</label> -->
         <p id="time">0:00</p>
         <input type="range" min="0" max="100" value="0" id="slider" onchange="change()" title="Adjust volume">
         <p id="duration">0:00</p>
-        <label for="vol">Volume:</label>
+        <label for="vol">vol</label>
         <input type="range" min="0" max="100" value="0" id="vol">
         <p id="vol-value">0</p>
-        <input type="range" min="0" max="100" value="0" id="volume" onchange="adjustVolume()" aria-label="Volume">
-        <p id="vol">0</p>
+        <!-- <input type="range" min="0" max="100" value="0" id="volume" onchange="adjustVolume()" aria-label="Volume">
+        <p id="vol">0</p> -->
     </div>
     
     <script>
@@ -118,17 +118,6 @@
             volValue.innerHTML = vol.value;
         });
     </script>
-</body>
-</html>
-    
-
-
-
-    </script>
- 
-
-       
-    
     
 </body>
 </html>

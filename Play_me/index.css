@@ -41,8 +41,8 @@ img {
 }
 button {
     background-color: #4CAF50;
-    color: white;
-    padding: 8px 10px;
+    color: rgb(224, 205, 205);
+    padding: 10px 20px;
     border: none;
     border-radius: 10px;
     margin: 10px;
@@ -52,14 +52,14 @@ button {
 button:hover {
     background-color: #5a3e8e;
 }
-@media only screen and (max-width: 900px)
+/* @media only screen and (max-width: 900px)
     .music-container{
         width: 80%;
-    }
+    } */
     input[type=range] {
         -webkit-appearance: none;
-        width: 50%;
-        margin: 10px 0;
+        width: 40%;
+        margin: 7px 0;
     }
     /* input[type=range]:focus {
         outline: none;
@@ -153,7 +153,7 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 input[type=range]::-ms-track {
-    width: 100%;
+    width: 80%;
     height: 5px;
     cursor: pointer;
     animate: 0.2s;
