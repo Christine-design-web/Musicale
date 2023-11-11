@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicale</title>
+    <link rel="stylesheet" href="index.css">
+   
+</head>
+<body>
+    <div class="music-container">
+        <h2>Musicale</h2>
+        <p>A music player for the web.</p>
+        <audio src="./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3" id="music">play me</audio>
+        <div class="img-container">
+            <img src="images/love music.png" alt="music-cover" id="cover">
+        </div>
+        <button onclick="play()">Play</button>
+        <button onclick="pause()">Pause</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="next()">Next</button>
+        <button onclick="prev()">Prev</button>
+        <button onclick="random()">Random</button>
+        <button onclick="repeat()">Repeat</button>
+        <button onclick="mute()">Mute</button>
+        <button onclick="unmute()">Unmute</button>
+        <label for="time">Time:</label>
+        <p id="time">0:00</p>
+        <input type="range" min="0" max="100" value="0" id="slider" onchange="change()" title="Adjust volume">
+        <p id="duration">0:00</p>
+        <label for="vol">Volume:</label>
+        <input type="range" min="0" max="100" value="0" id="vol">
+        <p id="vol-value">0</p>
+        <input type="range" min="0" max="100" value="0" id="volume" onchange="adjustVolume()" aria-label="Volume">
+        <p id="vol">0</p>
+    </div>
+    
+    <script>
+        var audio = document.getElementById("music");
+        var cover = document.getElementById("cover");
+        var slider = document.getElementById("slider");
+        var time = document.getElementById("time");
+        var duration = document.getElementById("duration");
+        var vol = document.getElementById("vol");
+        var volValue = document.getElementById("vol-value");
+        var volume = document.getElementById("volume");
+
+        function play() {
+            audio.play();
+        }
+
+        function pause() {
+            audio.pause();
+        }
+
+        function stop() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        function next() {
+            // TODO: Implement next function
+        }
+
+        function prev() {
+            // TODO: Implement prev function
+        }
+
+        function random() {
+            // TODO: Implement random function
+        }
+
+        function repeat() {
+            // TODO: Implement repeat function
+        }
+
+        function mute() {
+            audio.muted = true;
+        }
+
+        function unmute() {
+            audio.muted = false;
+        }
+
+        function change() {
+            var value = slider.value;
+            audio.currentTime = (value / 100) * audio.duration;
+        }
+
+        function adjustVolume() {
+            var value = volume.value;
+            audio.volume = value / 100;
+            volValue.innerHTML = value;
+        }
+
+        audio.addEventListener("timeupdate", function() {
+            var currentTime = audio.currentTime;
+            var durationTime = audio.duration;
+            var minutes = Math.floor(currentTime / 60);
+            var seconds = Math.floor(currentTime % 60);
+            var durationMinutes = Math.floor(durationTime / 60);
+            var durationSeconds = Math.floor(durationTime % 60);
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+            if (durationSeconds < 10) {
+                durationSeconds = "0" + durationSeconds;
+            }
+            time.innerHTML = minutes + ":" + seconds;
+            duration.innerHTML = durationMinutes + ":" + durationSeconds;
+            slider.value = (currentTime / durationTime) * 100;
+            vol.value = audio.volume * 100;
+            volValue.innerHTML = vol.value;
+        });
+    </script>
+</body>
+</html>
+        var vol = document.getElementById("vol");
+
+
+
+    </script>
+ 
+
+       
+    
+    
+</body>
+</html>
