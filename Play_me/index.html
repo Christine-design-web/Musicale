@@ -12,6 +12,7 @@
         <h2>Musicale</h2>
         <p>A music player for the web.</p>
         <audio src="./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3" id="music">play me</audio>
+        <audio src="./music/Afrobeats-DJ-Mixes-Naija--Spyro-Who-Is-Your-Guy.mp3" id="music">play me</audio>
         <div class="img-container">
             <img src="images/love music.png" alt="music-cover" id="cover">
         </div>
@@ -59,10 +60,14 @@
         }
 
         function next() {
-            // TODO: Implement next function
+            // code to change song here
+            audio.next();
+
         }
 
+
         function prev() {
+            audio.prev();
             // TODO: Implement prev function
         }
 
@@ -115,7 +120,7 @@
     </script>
 </body>
 </html>
-        var vol = document.getElementById("vol");
+    
 
 
 
