@@ -11,13 +11,22 @@
     <div class="music-container">
         <h2>Musicale</h2>
         <p>A music player for the web.</p>
+        
+        <!-- Add search input and button -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a song...">
+            <button onclick="search()">Search</button>
+        </div>
+        
         <audio id="music" controls>
             <source src="./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
+        
         <div class="img-container">
             <img src="images/love music.png" alt="music-cover" id="cover">
         </div>
+        
         <button onclick="play()">Play</button>
         <button onclick="pause()">Pause</button>
         <button onclick="stop()">Stop</button>
@@ -27,9 +36,9 @@
         <button onclick="unmute()">Unmute</button>
         <!-- <p id="time">0:00</p>
         <input type="range" min="0" max="100" value="0" id="slider" onchange="change()" title="Adjust volume">
-        <p id="duration">0:00</p> -->
-        <!-- <label for="vol">vol</label> -->
-        <!-- <input type="range" min="0" max="100" value="0" id="vol"> -->
+        <p id="duration">0:00</p>
+        <label for="vol">vol</label>
+        <input type="range" min="0" max="100" value="0" id="vol"> -->
         <p id="vol-value">0</p>
         <input type="range" min="0" max="100" value="0" id="volume" onchange="adjustVolume()" aria-label="Volume">
     </div>
@@ -115,6 +124,20 @@
             vol.value = audio.volume * 100;
             volValue.innerHTML = vol.value;
         });
+        
+        // Add search functionality
+        function search() {
+            var searchInput = document.getElementById("searchInput").value.toLowerCase();
+            var foundIndex = songs.findIndex(song => song.toLowerCase().includes(searchInput));
+            
+            if (foundIndex !== -1) {
+                currentSongIndex = foundIndex;
+                audio.src = songs[currentSongIndex];
+                audio.play();
+            } else {
+                alert("Song not found!");
+            }
+        }
     </script>
 </body>
 </html>
