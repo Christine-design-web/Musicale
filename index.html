@@ -6,40 +6,34 @@
     <title>musicale</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="./images/fav icon2.jpeg" type="image/x-icon">
-   
 </head>
 <body>
     <div class="music-container">
         <h2>Musicale</h2>
         <p>A music player for the web.</p>
-        <audio src="./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3" id="music">play me</audio>
-        <audio src="./music/Nyashinski-Perfect-design.mp3" id="music">play me</audio>
-        <audio src="./music/Afrobeats-DJ-Mixes-Naija--Spyro-Who-Is-Your-Guy.mp3" id="music">play me</audio>
+        <audio id="music" controls>
+            <source src="./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
         <div class="img-container">
             <img src="images/love music.png" alt="music-cover" id="cover">
         </div>
         <button onclick="play()">Play</button>
         <button onclick="pause()">Pause</button>
         <button onclick="stop()">Stop</button>
-        <button onclick="mute()">Mute</button>
-        <button onclick="unmute()">Unmute</button>
-        <!-- <button onclick="next()">Next</button>
+        <button onclick="next()">Next</button>
         <button onclick="prev()">Prev</button>
-        <button onclick="random()">Random</button>
-        <button onclick="repeat()">Repeat</button>
         <button onclick="mute()">Mute</button>
         <button onclick="unmute()">Unmute</button>
-        <label for="time">Time:</label> -->
-        <p id="time">0:00</p>
+        <!-- <p id="time">0:00</p>
         <input type="range" min="0" max="100" value="0" id="slider" onchange="change()" title="Adjust volume">
-        <p id="duration">0:00</p>
-        <label for="vol">vol</label>
-        <input type="range" min="0" max="100" value="0" id="vol">
+        <p id="duration">0:00</p> -->
+        <!-- <label for="vol">vol</label> -->
+        <!-- <input type="range" min="0" max="100" value="0" id="vol"> -->
         <p id="vol-value">0</p>
         <input type="range" min="0" max="100" value="0" id="volume" onchange="adjustVolume()" aria-label="Volume">
-        <!-- <p id="vol">0</p> -->
     </div>
-    
+
     <script>
         var audio = document.getElementById("music");
         var cover = document.getElementById("cover");
@@ -49,6 +43,14 @@
         var vol = document.getElementById("vol");
         var volValue = document.getElementById("vol-value");
         var volume = document.getElementById("volume");
+
+        var songs = [
+            "./music/Bongo-Mix-2023-DJ-BEE--Bongo-Flava-Music-mix.mp3",
+            "./music/Nyashinski-Perfect-design.mp3",
+            "./music/Afrobeats-DJ-Mixes-Naija--Spyro-Who-Is-Your-Guy.mp3"
+        ];
+
+        var currentSongIndex = 0;
 
         function play() {
             audio.play();
@@ -63,29 +65,21 @@
             audio.currentTime = 0;
         }
 
-        // function next() {
-        //     // code to change song here
-        //     audio.next();
+        function next() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            audio.src = songs[currentSongIndex];
+            audio.play();
+        }
 
-        // }
-
-
-        // function prev() {
-        //     audio.prev();
-        //     // TODO: Implement prev function
-        // }
-
-        // function random() {
-        //     // TODO: Implement random function
-        // }
-
-        // function repeat() {
-        //     // TODO: Implement repeat function
-        // }
+        function prev() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            audio.src = songs[currentSongIndex];
+            audio.play();
+        }
 
         function mute() {
-          audio.muted = true;
-         }
+            audio.muted = true;
+        }
 
         function unmute() {
             audio.muted = false;
@@ -122,6 +116,5 @@
             volValue.innerHTML = vol.value;
         });
     </script>
-    
 </body>
 </html>
